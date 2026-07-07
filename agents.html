@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenDesk - Agents & Workloads</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <!-- Generated Dynamically -->
+    </header>
+
+    <div class="container">
+        <!-- 1. Supervisor Dashboard List -->
+        <div id="supervisor-agents-card" class="card hidden">
+            <h2 class="card-title">Agents Workload Capacity & Availability</h2>
+            <div style="overflow-x: auto;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width: 80px;">Agent ID</th>
+                            <th>Full Name</th>
+                            <th>Email</th>
+                            <th>Department</th>
+                            <th>Active Load (Current/Max)</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="agents-table-body">
+                        <!-- Dynamically loaded -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- 2. Agent Personal Profile Card -->
+        <div id="agent-profile-card" class="card hidden" style="max-width: 550px; margin: 0 auto;">
+            <h2 class="card-title"><i class="fa-solid fa-id-card" style="color: #6366f1; margin-right: 0.75rem;"></i>My Support Agent Profile</h2>
+            
+            <div id="agent-profile-details" style="display: flex; flex-direction: column; gap: 1.25rem; margin-top: 1.5rem;">
+                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(226, 232, 240, 0.5); padding-bottom: 0.75rem;">
+                    <span style="font-weight: 600; color: #1e1b4b;"><i class="fa-solid fa-building" style="margin-right: 0.5rem; color: #6366f1;"></i> Department</span>
+                    <span id="display-agent-dept" style="font-weight: 500; color: #334155;">General Support</span>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(226, 232, 240, 0.5); padding-bottom: 0.75rem;">
+                    <span style="font-weight: 600; color: #1e1b4b;"><i class="fa-solid fa-graduation-cap" style="margin-right: 0.5rem; color: #6366f1;"></i> Specialization Focus</span>
+                    <span id="display-agent-spec" style="font-weight: 500; color: #334155;">Technical Support</span>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(226, 232, 240, 0.5); padding-bottom: 0.75rem;">
+                    <span style="font-weight: 600; color: #1e1b4b;"><i class="fa-solid fa-ticket" style="margin-right: 0.5rem; color: #6366f1;"></i> Ticket Load Capacity</span>
+                    <span id="display-agent-capacity" style="font-weight: 500; color: #334155;">5 Tickets Max</span>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(226, 232, 240, 0.5); padding-bottom: 0.75rem;">
+                    <span style="font-weight: 600; color: #1e1b4b;"><i class="fa-solid fa-list-check" style="margin-right: 0.5rem; color: #6366f1;"></i> Current Active Load</span>
+                    <span id="display-agent-load" style="font-weight: 700; color: #4f46e5;">0 / 5</span>
+                </div>
+                
+                <div style="display: flex; align-items: center; justify-content: space-between; padding-bottom: 0.5rem;">
+                    <span style="font-weight: 600; color: #1e1b4b;"><i class="fa-solid fa-signal" style="margin-right: 0.5rem; color: #6366f1;"></i> System Status</span>
+                    <span id="display-agent-status">Online</span>
+                </div>
+            </div>
+            
+            <p id="agent-profile-status-message" style="margin-top: 1.5rem; font-size: 0.85rem; color:#64748b; text-align: center; font-style: italic;">
+                Note: Profile updates are restricted . Contact your supervisor to request capacity changes.
+            </p>
+        </div>
+    </div>
+
+    <!-- Edit Agent Modal -->
+    <div id="edit-agent-modal" class="modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3 class="modal-title">Edit Agent Profile</h3>
+                <button class="modal-close-btn" onclick="closeEditModal()">&times;</button>
+            </div>
+            <form id="edit-agent-form">
+                <input type="hidden" id="edit-agent-id">
+                <input type="hidden" id="edit-agent-avail">
+                
+                <div class="form-group">
+                    <label class="form-label" for="edit-agent-dept">Assigned Department</label>
+                    <input type="text" id="edit-agent-dept" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="edit-agent-spec">Specialization Focus</label>
+                    <input type="text" id="edit-agent-spec" class="form-input" required>
+                </div>
+                
+                <div class="form-group">
+                    <label class="form-label" for="edit-agent-capacity">Max Ticket Capacity</label>
+                    <input type="number" id="edit-agent-capacity" class="form-input" min="1" max="20" required>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

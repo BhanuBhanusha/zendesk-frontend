@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenDesk - Comments & Conversation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <!-- Generated Dynamically -->
+    </header>
+
+    <div class="container" style="max-width: 800px;">
+        <p><a href="tickets.html" style="color: #ffffff; text-decoration: none; font-weight: 600;"><i class="fa-solid fa-arrow-left"></i> Back to Tickets Directory</a></p>
+        
+        <!-- Ticket Information Summary Box -->
+        <div id="comments-ticket-header" class="card" style="margin-top: 1rem;">
+            <!-- Loaded dynamically -->
+        </div>
+
+        <!-- Conversation Logs History -->
+        <div class="card">
+            <h3 class="card-title">Conversation Timeline</h3>
+            <div id="comments-list-box" style="margin-bottom: 2rem;">
+                <!-- Loaded dynamically -->
+            </div>
+
+            <!-- Add Comment Form -->
+            <div style="border-top: 2px solid #f3f4f6; padding-top: 1.5rem;">
+                <h3 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.75rem;">Post a Reply</h3>
+                <form id="add-comment-form">
+                    <div class="form-group">
+                        <textarea id="comment-text" class="form-input" rows="4" placeholder="Enter message reply content..." required style="resize: vertical; font-family: inherit;"></textarea>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div id="comment-internal-wrapper" class="hidden">
+                            <label style="cursor: pointer; font-weight: 500; font-size: 0.9rem; color: #d97706;">
+                                <input type="checkbox" id="comment-is-internal"> Secure Internal Note (Hidden from Customer)
+                            </label>
+                        </div>
+                        <div style="flex-grow: 1; text-align: right;">
+                            <button type="submit" class="btn btn-primary">Post Reply</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

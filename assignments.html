@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenDesk - Ticket Assignments</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <!-- Generated Dynamically -->
+    </header>
+
+    <div class="container" style="max-width: 600px;">
+        <div class="card">
+            <h2 class="card-title">Routing & Assignments Console</h2>
+            <p style="color: #6b7280; font-size: 0.9rem; margin-bottom: 1.5rem;">Perform ticket dispatch actions below. Assignments are restricted to supervisors.</p>
+
+            <!-- Manual Assignment Form -->
+            <div style="border-bottom: 1px solid #e5e7eb; padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.75rem;">Manual Assignment Dispatch</h3>
+                <form id="assign-form">
+                    <div class="form-group">
+                        <label class="form-label" for="assign-ticket-id">Ticket ID</label>
+                        <input type="number" id="assign-ticket-id" class="form-input" placeholder="e.g. 1" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="assign-agent-id">Agent Profile ID</label>
+                        <input type="number" id="assign-agent-id" class="form-input" placeholder="e.g. 2" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Assign Ticket</button>
+                </form>
+            </div>
+
+            <!-- Auto Assignment Form -->
+            <div style="border-bottom: 1px solid #e5e7eb; padding-bottom: 1.5rem; margin-bottom: 1.5rem;">
+                <h3 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.75rem;">Auto-Assign Dispatch (Least Loaded Agent)</h3>
+                <form id="auto-assign-form">
+                    <div class="form-group">
+                        <label class="form-label" for="auto-ticket-id">Ticket ID</label>
+                        <input type="number" id="auto-ticket-id" class="form-input" placeholder="e.g. 1" required>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Auto-Route Ticket</button>
+                </form>
+            </div>
+
+            <!-- Unassign Form -->
+            <div>
+                <h3 style="font-size: 1.1rem; margin-top: 0; margin-bottom: 0.75rem;">Unassign & Reset Ticket</h3>
+                <form id="unassign-form">
+                    <div class="form-group">
+                        <label class="form-label" for="unassign-ticket-id">Ticket ID</label>
+                        <input type="number" id="unassign-ticket-id" class="form-input" placeholder="e.g. 1" required>
+                    </div>
+                    <button type="submit" class="btn btn-danger">Unassign Ticket</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

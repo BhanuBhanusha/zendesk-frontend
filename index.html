@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenDesk Support - Create Account</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>ZenDesk Support</h1>
+    </header>
+
+    <div class="auth-container">
+        <!-- Register Card -->
+        <div id="register-card" class="auth-card">
+            <h2 class="auth-title">
+                <i class="fa-solid fa-user-plus" style="margin-right: 0.75rem;"></i>Create Account
+            </h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label class="form-label" for="register-name">Full Name</label>
+                    <input type="text" id="register-name" class="form-input" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="register-email">Email Address</label>
+                    <input type="email" id="register-email" class="form-input" placeholder="name@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="register-password">Password</label>
+                    <input type="password" id="register-password" class="form-input" placeholder="••••••••" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="register-role">System Role</label>
+                    <select id="register-role" class="form-input" required>
+                        <option value="CUSTOMER">Customer</option>
+                        <option value="SUPPORT_AGENT">Support Agent</option>
+                        <option value="SUPERVISOR">Supervisor</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Register Account</button>
+            </form>
+            <p style="text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: #4b5563;">
+                Already have an account? <a href="login.html" class="link-theme">Sign In</a>
+            </p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

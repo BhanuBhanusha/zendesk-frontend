@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenDesk - Tickets Lifecycle</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <!-- Generated Dynamically -->
+    </header>
+
+    <div class="container">
+        <div class="dashboard-row">
+            <!-- Left: Tickets List -->
+            <div class="flex-2 card">
+                <div class="clearfix" style="margin-bottom: 1rem;">
+                    <h2 class="card-title" style="float: left; border: none; margin: 0; padding: 0;">Support Tickets</h2>
+                    <div class="float-right">
+                        <label for="tickets-status-filter" style="font-size: 0.9rem; margin-right: 0.5rem; font-weight:600;">Filter:</label>
+                        <select id="tickets-status-filter" class="form-input" style="display: inline-block; width: 140px; padding: 0.25rem;">
+                            <option value="ALL">All Statuses</option>
+                            <option value="OPEN">Open</option>
+                            <option value="IN_PROGRESS">In Progress</option>
+                            <option value="ESCALATED">Escalated</option>
+                            <option value="RESOLVED">Resolved</option>
+                            <option value="CLOSED">Closed</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="tickets-stats-panel" class="hidden" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; background: rgba(99, 102, 241, 0.05); padding: 1.25rem; border-radius: 12px; border: 1px solid rgba(99, 102, 241, 0.15);">
+                    <!-- Loaded dynamically -->
+                </div>
+
+                <div style="overflow-x: auto;">
+                    <table id="tickets-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 80px;">Ticket ID</th>
+                                <th>Title</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Priority</th>
+                                <th>Assigned Agent</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tickets-table-body">
+                            <!-- Loaded dynamically -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Right: Submit Ticket Form (Customer Only) -->
+            <div class="flex-1 card hidden" id="customer-create-card">
+                <h2 class="card-title">Submit New Issue</h2>
+                <form id="ticket-form">
+                    <div class="form-group">
+                        <label class="form-label" for="ticket-title">Title</label>
+                        <input type="text" id="ticket-title" class="form-input" placeholder="Summarize your issue" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="ticket-category">Category</label>
+                        <select id="ticket-category" class="form-input" required>
+                            <option value="Technical Support">Technical Support</option>
+                            <option value="Billing & Pricing">Billing & Pricing</option>
+                            <option value="Account Management">Account Management</option>
+                            <option value="Feature Request">Feature Request</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="ticket-priority">Priority</label>
+                        <select id="ticket-priority" class="form-input" required>
+                            <option value="LOW">Low (72 hours response)</option>
+                            <option value="MEDIUM" selected>Medium (24 hours response)</option>
+                            <option value="HIGH">High (12 hours response)</option>
+                            <option value="CRITICAL">Critical (4 hours response)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="ticket-description">Detailed Description</label>
+                        <textarea id="ticket-description" class="form-input" rows="5" placeholder="Provide details about the problem" required style="resize: vertical; font-family: inherit;"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Ticket</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
