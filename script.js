@@ -1,5 +1,5 @@
 // Shared JavaScript for ZenDesk Multi-Page Application
-const API_BASE = 'https://backend-s9yn.render.com/';
+const API_BASE = 'https://backend-s9yn.onrender.com';
 
 // Global Auth Helpers
 function getToken() {
