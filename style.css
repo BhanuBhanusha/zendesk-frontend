@@ -52,18 +52,14 @@ header a:hover {
     display: flex;
     align-items: center;
     text-decoration:none;
-}
-
-.nav-item {
     border: 1px solid #ffffff; /* White border to match text */
     border-radius: 4px;        /* Optional: slightly rounds the corners */
     padding: 6px 12px;         /* Adds breathing room inside the border */
-    margin: 0 5px;             /* Keeps the boxes from bumping into each other */
-    text-decoration: none;     /* Removes underlines if they are links */
+    margin: 0 5px;             /* Keeps the boxes from bumping into each other */   /* Removes underlines if they are links */
 }
 
 /* Optional hover effect to make it interactive */
-.nav-item:hover {
+.nav-links:hover {
     background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight */
 }
 
