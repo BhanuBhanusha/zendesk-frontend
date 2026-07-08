@@ -507,10 +507,10 @@ tr:hover {
     margin-top: 1.5rem;
 }
 /* ==========================================================================
-   PERFECT MOBILE VIEWPORT LAYOUT (No Page Spill, Scrollable Nav Only)
+   COMPLETE MOBILE RESPONSIVE FIX (Locks Layout & Fixes Right-Side Cut Off)
    ========================================================================== */
 
-/* Completely lock the page viewport width to the device width */
+/* 1. Prevent any element from forcing the page to scale horizontally */
 html, body {
     overflow-x: hidden !important;
     width: 100% !important;
@@ -519,7 +519,7 @@ html, body {
 }
 
 @media screen and (max-width: 768px) {
-    /* 1. Header locked perfectly to the phone container width */
+    /* ==================== HEADER & NAV FIX ==================== */
     header {
         display: flex !important;
         flex-direction: column !important;
@@ -527,72 +527,28 @@ html, body {
         padding: 1rem !important;
         align-items: stretch !important;
         width: 100% !important;
-        max-width: 100% !important;
         box-sizing: border-box !important;
-        overflow: hidden !important; /* Prevents anything inside from bleeding out */
     }
 
-    /* 2. Top Profile Info Row layout */
     .header-top-row {
         display: flex !important;
         justify-content: space-between !important;
         align-items: center !important;
         width: 100% !important;
-        gap: 10px !important;
         box-sizing: border-box !important;
     }
 
     header h1 {
         font-size: 1.25rem !important;
         margin: 0 !important;
-        flex-shrink: 0 !important;
     }
 
-    .user-profile-meta {
-        display: flex !important;
-        align-items: center !important;
-        gap: 6px !important;
-        font-size: 0.8rem !important;
-        max-width: 70% !important;
-        justify-content: flex-end !important;
-    }
-
-    .user-profile-meta span:first-child {
-        max-width: 110px !important;
-        overflow: hidden !important;
-        text-overflow: ellipsis !important;
-        white-space: nowrap !important;
-        color: #cbd5e1 !important;
-    }
-
-    .badge-supervisor {
-        font-size: 0.65rem !important;
-        padding: 2px 6px !important;
-        background-color: rgba(255, 255, 255, 0.15) !important;
-        color: #fff !important;
-    }
-
-    .btn-logout {
-        padding: 4px 8px !important;
-        font-size: 0.75rem !important;
-        border-radius: 4px !important;
-        background: #ffffff !important;
-        color: #1e1b4b !important;
-        border: none !important;
-        cursor: pointer !important;
-        font-weight: 600 !important;
-    }
-
-    /* 3. Navigation Container - Fits perfectly within the header bounds */
     .nav-links {
         display: flex !important;
         gap: 10px !important;
-        width: 100% !important;        /* Keeps it strictly within the screen bounds */
-        max-width: 100% !important;
-        padding: 4px 0 8px 0 !important; /* Removed negative margins to stop page spilling */
+        width: 100% !important;        
+        padding: 4px 0 8px 0 !important; 
         margin: 0 !important;          
-        
-        /* Enables swipe navigation */
         overflow-x: auto !important;
         white-space: nowrap !important;
         flex-direction: row !important;
@@ -601,38 +557,77 @@ html, body {
         box-sizing: border-box !important;
     }
 
-    /* Hide unsightly native scroll tracks */
-    .nav-links::-webkit-scrollbar {
-        display: none !important;
-    }
-    .nav-links {
-        -ms-overflow-style: none !important;
-        scrollbar-width: none !important;
-    }
+    /* Hide scrollbars */
+    .nav-links::-webkit-scrollbar { display: none !important; }
+    .nav-links { -ms-overflow-style: none !important; scrollbar-width: none !important; }
 
-    /* 4. Perfectly locked fixed-size items */
     header a {
-        width: 115px !important;     /* Custom rigid layout size */
-        flex-shrink: 0 !important;   /* CRITICAL: Prevents columns from resizing or squeezing */
+        width: 110px !important;     /* Perfect fixed size for mobile view */
+        flex-shrink: 0 !important;   
         text-align: center !important;
         padding: 10px 0 !important;
         font-size: 0.85rem !important;
         border-radius: 8px !important;
-        margin-right: 0 !important;  
         display: inline-block !important;
         box-sizing: border-box !important;
-
         background-color: rgba(255, 255, 255, 0.06) !important;
         border: 1px solid rgba(99, 102, 241, 0.2) !important;
         color: #cbd5e1 !important;
-        text-decoration: none !important;
     }
 
-    /* Active Highlight styles matching EventSphere specs */
-    header a.active, 
-    header a:active {
+    header a.active {
         color: #ffffff !important;
         background-color: #4f46e5 !important;
         border-color: #6366f1 !important;
+    }
+
+    /* ==================== MAIN CONTENT & CARD FIXES ==================== */
+    /* Shrink the page margins so elements don't get squeezed */
+    .container {
+        margin: 1rem auto !important;
+        padding: 0 1rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Reduce card internal padding so it doesn't push bounds out */
+    .card {
+        padding: 1.25rem !important;
+        margin-bottom: 1rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Overwrite fixed desktop min-widths causing the right-side cut off */
+    .dashboard-row {
+        flex-direction: column !important;
+        gap: 1rem !important;
+    }
+
+    .flex-1, .flex-2 {
+        flex: none !important;
+        width: 100% !important;
+        min-width: 0 !important; /* Overrides the desktop 300px and 450px limits */
+    }
+
+    /* Make ticket summary blocks tile cleanly in pairs instead of breaking out */
+    .card .dashboard-row {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Shows 2 cards per row */
+        gap: 10px !important;
+    }
+    
+    .card .dashboard-row .card {
+        margin-bottom: 0 !important;
+    }
+
+    /* ==================== TABLE RESPONSIVENESS ==================== */
+    /* Tables naturally break layouts on mobile. This forces them into a scroll box */
+    table {
+        display: block !important;
+        width: 100% !important;
+        overflow-x: auto !important; /* Let's just the data matrix scroll if needed */
+        white-space: nowrap !important;
+        -webkit-overflow-scrolling: touch;
     }
 }
