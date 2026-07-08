@@ -506,31 +506,33 @@ tr:hover {
     gap: 1rem;
     margin-top: 1.5rem;
 }
-
 /* ==========================================================================
-   MOBILE RESPONSIVE FIXED OVERRIDES (No Horizontal Page Leak)
+   PERFECT MOBILE VIEWPORT LAYOUT (No Page Spill, Scrollable Nav Only)
    ========================================================================== */
 
-/* Apply global block to prevent any accidental horizontal page shifting */
+/* Completely lock the page viewport width to the device width */
 html, body {
     overflow-x: hidden !important;
     width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
 }
 
 @media screen and (max-width: 768px) {
-    /* 1. Reset Header Layout Wrapper */
+    /* 1. Header locked perfectly to the phone container width */
     header {
         display: flex !important;
         flex-direction: column !important;
         gap: 1rem !important;
         padding: 1rem !important;
         align-items: stretch !important;
-        overflow-x: hidden !important; /* Prevents container leaks */
         width: 100% !important;
+        max-width: 100% !important;
         box-sizing: border-box !important;
+        overflow: hidden !important; /* Prevents anything inside from bleeding out */
     }
 
-    /* 2. Top Alignment Row (ZenDesk on Left, Profile Info on Right) */
+    /* 2. Top Profile Info Row layout */
     .header-top-row {
         display: flex !important;
         justify-content: space-between !important;
@@ -546,7 +548,6 @@ html, body {
         flex-shrink: 0 !important;
     }
 
-    /* 3. Refined Profile Meta Group styling */
     .user-profile-meta {
         display: flex !important;
         align-items: center !important;
@@ -556,7 +557,6 @@ html, body {
         justify-content: flex-end !important;
     }
 
-    /* Prevent email text from breaking layout bounds */
     .user-profile-meta span:first-child {
         max-width: 110px !important;
         overflow: hidden !important;
@@ -565,7 +565,6 @@ html, body {
         color: #cbd5e1 !important;
     }
 
-    /* Specific mini tags for Supervisor & Log Out */
     .badge-supervisor {
         font-size: 0.65rem !important;
         padding: 2px 6px !important;
@@ -584,16 +583,16 @@ html, body {
         font-weight: 600 !important;
     }
 
-    /* 4. Horizontal Scroll Container for Navigation Links */
+    /* 3. Navigation Container - Fits perfectly within the header bounds */
     .nav-links {
         display: flex !important;
         gap: 10px !important;
+        width: 100% !important;        /* Keeps it strictly within the screen bounds */
+        max-width: 100% !important;
+        padding: 4px 0 8px 0 !important; /* Removed negative margins to stop page spilling */
+        margin: 0 !important;          
         
-        /* FIX: Changed 100vw to calc to perfectly adapt inside layout without overflow */
-        width: calc(100% + 2rem) !important; 
-        margin: 0 -1rem !important; 
-        padding: 4px 16px 8px 16px !important;
-        
+        /* Enables swipe navigation */
         overflow-x: auto !important;
         white-space: nowrap !important;
         flex-direction: row !important;
@@ -602,7 +601,7 @@ html, body {
         box-sizing: border-box !important;
     }
 
-    /* Completely hide unsightly scroll bars */
+    /* Hide unsightly native scroll tracks */
     .nav-links::-webkit-scrollbar {
         display: none !important;
     }
@@ -611,10 +610,10 @@ html, body {
         scrollbar-width: none !important;
     }
 
-    /* 5. Clean, Locked Width Individual Items */
+    /* 4. Perfectly locked fixed-size items */
     header a {
-        width: 110px !important;     /* Hard-coded item size */
-        flex-shrink: 0 !important;   /* Keeps cards at exactly 110px */
+        width: 115px !important;     /* Custom rigid layout size */
+        flex-shrink: 0 !important;   /* CRITICAL: Prevents columns from resizing or squeezing */
         text-align: center !important;
         padding: 10px 0 !important;
         font-size: 0.85rem !important;
@@ -629,7 +628,7 @@ html, body {
         text-decoration: none !important;
     }
 
-    /* Active Highlight States */
+    /* Active Highlight styles matching EventSphere specs */
     header a.active, 
     header a:active {
         color: #ffffff !important;
