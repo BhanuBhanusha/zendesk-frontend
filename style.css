@@ -508,28 +508,31 @@ tr:hover {
 }
 
 /* ==========================================================================
-   MOBILE-SPECIFIC RESPONSIVE OVERRIDES (Horizontal Scroll Navigation)
+   MOBILE-SPECIFIC RESPONSIVE OVERRIDES (ZenDesk Custom Theme)
    ========================================================================== */
 
 @media screen and (max-width: 768px) {
-    /* 1. Modify your header layout to accommodate mobile wrapping */
+    /* 1. Stack the header layout vertically and add breathing room */
     header {
-        flex-direction: column;
-        gap: 1.25rem;
-        padding: 1rem;
-        align-items: stretch;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        padding: 1.25rem 1rem !important;
+        align-items: center !important;
+        text-align: center;
     }
 
     header h1 {
-        text-align: center;
-        font-size: 1.3rem;
+        font-size: 1.4rem;
+        margin-bottom: 0.25rem;
     }
 
-    /* 2. Turn your nav links container into a swipeable carousel container */
+    /* 2. Turn your nav links container into a sleek swipeable row */
     .nav-links {
         display: flex !important;
-        gap: 12px;                  /* Space between your navigation links */
-        padding: 4px 4px 12px 4px;
+        gap: 10px !important;
+        width: 100vw;                 /* Spans the full viewport width */
+        padding: 4px 16px 12px 16px !important;
+        margin: 0 -1rem;              /* Bleeds to the screen edges nicely */
         
         /* Core horizontal scrolling mechanics */
         overflow-x: auto !important;           
@@ -537,48 +540,64 @@ tr:hover {
         flex-direction: row !important;
         justify-content: flex-start !important;
         
-        /* Smooth thumb gliding for iOS and Android web views */
+        /* Smooth scrolling physics on mobile devices */
         -webkit-overflow-scrolling: touch; 
+        box-sizing: border-box;
     }
 
-    /* 3. Hide the browser's native bulky scrollbar tracks */
+    /* Hide the default bulky mobile/browser scrollbars */
     .nav-links::-webkit-scrollbar {
-        display: none !important;              /* Chrome, Safari, and Opera */
+        display: none !important;
     }
     .nav-links {
-        -ms-overflow-style: none !important;  /* IE and Edge */
-        scrollbar-width: none !important;     /* Firefox */
+        -ms-overflow-style: none !important;
+        scrollbar-width: none !important;
     }
 
-    /* 4. Transform individual links into fixed-size mobile nav cards */
+    /* 3. Style individual navigation links into fixed-size cards */
     header a {
-        /* Fixed Size Width Adjuster */
-        width: 130px;               /* Change this to make each tab narrower/wider */
-        flex-shrink: 0 !important;   /* Prevents links from compressing into squares */
+        /* Control your fixed width sizing here */
+        width: 120px;               
+        flex-shrink: 0 !important;   /* CRITICAL: Prevents items from compressing */
         
-        /* Layout & alignment inside the tab */
-        margin-right: 0 !important;  /* Clears desktop spacing */
+        margin-right: 0 !important;  /* Clears desktop right margins */
         text-align: center;
-        padding: 10px 0;
+        padding: 10px 6px;
         box-sizing: border-box;
         display: inline-block;
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         border-radius: 8px;
 
-        /* Premium Matching Dark Palette with subtle border highlight */
-        background-color: rgba(30, 27, 75, 0.65);
+        /* Premium Indigo matching theme */
+        background-color: rgba(255, 255, 255, 0.08);
         border: 1px solid rgba(99, 102, 241, 0.25);
         color: #cbd5e1;
+        text-decoration: none !important;
     }
 
-    /* 5. Mobile active-state simulation or tap-interaction hint */
+    /* Highlight or interaction state for mobile taps */
     header a:hover, 
-    header a:active,
-    header a.active {
+    header a:active {
         color: #ffffff;
         background-color: #4f46e5;
         border-color: #6366f1;
-        text-decoration: none !important; /* Removes default desktop underline */
-        box-shadow: 0 0 12px rgba(99, 102, 241, 0.4);
+        box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
+    }
+
+    /* 4. Ensure user profile metrics/logout buttons don't break lines weirdly */
+    header div:not(.nav-links) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.85rem;
+        color: #cbd5e1;
+    }
+    
+    /* Soft override fix for the Log Out button inside header to stay neat */
+    header .btn, header button {
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.8rem !important;
     }
 }
