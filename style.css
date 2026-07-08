@@ -37,30 +37,26 @@ header h1 {
 
 header a {
     color: #ffffff;
-    text-decoration: none;
+    text-decoration: none; /* Removes text decoration completely */
     margin-right: 1.5rem;
     font-weight: 500;
-    transition: color 0.2s ease;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.4); /* Premium border around navigation items */
+    border-radius: 6px;                          /* Slightly rounds the corners */
+    padding: 6px 14px;                           /* Adds breathing room inside the border */
+    display: inline-block;
 }
 
 header a:hover {
-    color: #cbd5e1;
-    text-decoration: underline;
+    color: #ffffff;
+    text-decoration: none; /* Ensures underlines stay gone on hover */
+    background-color: rgba(255, 255, 255, 0.15); /* Premium glassmorphism hover effect */
+    border-color: #ffffff;
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    text-decoration:none;
-    border: 1px solid #ffffff; /* White border to match text */
-    border-radius: 4px;        /* Optional: slightly rounds the corners */
-    padding: 6px 12px;         /* Adds breathing room inside the border */
-    margin: 0 5px;             /* Keeps the boxes from bumping into each other */   /* Removes underlines if they are links */
-}
-
-/* Optional hover effect to make it interactive */
-.nav-links:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight */
 }
 
 .container {
@@ -517,7 +513,7 @@ tr:hover {
     margin-top: 1.5rem;
 }
 /* ==========================================================================
-   COMPLETE MOBILE RESPONSIVE FIX (Locks Layout & Fixes Right-Side Cut Off)
+    COMPLETE MOBILE RESPONSIVE FIX (Locks Layout & Fixes Right-Side Cut Off)
    ========================================================================== */
 
 /* 1. Prevent any element from forcing the page to scale horizontally */
@@ -583,6 +579,11 @@ html, body {
         background-color: rgba(255, 255, 255, 0.06) !important;
         border: 1px solid rgba(99, 102, 241, 0.2) !important;
         color: #cbd5e1 !important;
+        text-decoration: none !important; /* Removes underlines on mobile viewports */
+    }
+
+    header a:hover {
+        text-decoration: none !important; /* Locks underlines off on mobile hover states */
     }
 
     header a.active {
@@ -641,5 +642,3 @@ html, body {
         -webkit-overflow-scrolling: touch;
     }
 }
-
-
