@@ -506,3 +506,56 @@ tr:hover {
     gap: 1rem;
     margin-top: 1.5rem;
 }
+
+/* Responsive Mobile Navigation with Swipe-Through */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1rem;
+        gap: 0.75rem;
+    }
+
+    header h1 {
+        text-align: center;
+        font-size: 1.25rem;
+    }
+
+    /* Wrap navigation & account actions into separate rows or combined track */
+    .nav-links {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        
+        /* Enables touch/swipe horizontal scrolling */
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch; /* Smooth momentum scrolling on iOS */
+        
+        /* Hides the default scrollbar visual clutter */
+        scrollbar-width: none; /* Firefox */
+        padding-bottom: 0.25rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none; /* Safari and Chrome */
+    }
+
+    header a {
+        display: inline-block;
+        margin-right: 1.25rem;
+        flex-shrink: 0; /* Prevents text from squishing or breaking into lines */
+    }
+    
+    /* Make the account details also adapt cleanly underneath */
+    header div[style*="text-align: right"], 
+    header .account-info,
+    header div:last-child {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 0.25rem;
+    }
+}
