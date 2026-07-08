@@ -506,9 +506,16 @@ tr:hover {
     gap: 1rem;
     margin-top: 1.5rem;
 }
+
 /* ==========================================================================
-   MOBILE RESPONSIVE FIXED OVERRIDES
+   MOBILE RESPONSIVE FIXED OVERRIDES (No Horizontal Page Leak)
    ========================================================================== */
+
+/* Apply global block to prevent any accidental horizontal page shifting */
+html, body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+}
 
 @media screen and (max-width: 768px) {
     /* 1. Reset Header Layout Wrapper */
@@ -518,6 +525,9 @@ tr:hover {
         gap: 1rem !important;
         padding: 1rem !important;
         align-items: stretch !important;
+        overflow-x: hidden !important; /* Prevents container leaks */
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     /* 2. Top Alignment Row (ZenDesk on Left, Profile Info on Right) */
@@ -526,13 +536,14 @@ tr:hover {
         justify-content: space-between !important;
         align-items: center !important;
         width: 100% !important;
-        gap: 10px;
+        gap: 10px !important;
+        box-sizing: border-box !important;
     }
 
     header h1 {
         font-size: 1.25rem !important;
         margin: 0 !important;
-        flex-shrink: 0;
+        flex-shrink: 0 !important;
     }
 
     /* 3. Refined Profile Meta Group styling */
@@ -541,25 +552,25 @@ tr:hover {
         align-items: center !important;
         gap: 6px !important;
         font-size: 0.8rem !important;
-        max-width: 70%;
-        justify-content: flex-end;
+        max-width: 70% !important;
+        justify-content: flex-end !important;
     }
 
-    /* Prevent email text from breaking your layout structure */
+    /* Prevent email text from breaking layout bounds */
     .user-profile-meta span:first-child {
-        max-width: 110px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        color: #cbd5e1;
+        max-width: 110px !important;
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+        white-space: nowrap !important;
+        color: #cbd5e1 !important;
     }
 
     /* Specific mini tags for Supervisor & Log Out */
     .badge-supervisor {
         font-size: 0.65rem !important;
         padding: 2px 6px !important;
-        background-color: rgba(255, 255, 255, 0.15);
-        color: #fff;
+        background-color: rgba(255, 255, 255, 0.15) !important;
+        color: #fff !important;
     }
 
     .btn-logout {
@@ -568,24 +579,26 @@ tr:hover {
         border-radius: 4px !important;
         background: #ffffff !important;
         color: #1e1b4b !important;
-        border: none;
-        cursor: pointer;
-        font-weight: 600;
+        border: none !important;
+        cursor: pointer !important;
+        font-weight: 600 !important;
     }
 
     /* 4. Horizontal Scroll Container for Navigation Links */
     .nav-links {
         display: flex !important;
         gap: 10px !important;
-        width: 100vw !important;
-        margin: 0 -1rem !important; /* Forces row to bleed to edge screen lines */
+        
+        /* FIX: Changed 100vw to calc to perfectly adapt inside layout without overflow */
+        width: calc(100% + 2rem) !important; 
+        margin: 0 -1rem !important; 
         padding: 4px 16px 8px 16px !important;
         
         overflow-x: auto !important;
         white-space: nowrap !important;
         flex-direction: row !important;
         justify-content: flex-start !important;
-        -webkit-overflow-scrolling: touch;
+        -webkit-overflow-scrolling: touch !important;
         box-sizing: border-box !important;
     }
 
@@ -600,13 +613,13 @@ tr:hover {
 
     /* 5. Clean, Locked Width Individual Items */
     header a {
-        width: 110px !important;     /* Adjusted exact fixed width matching your first app setup */
-        flex-shrink: 0 !important;   /* Prevents boxes from squeezing together */
+        width: 110px !important;     /* Hard-coded item size */
+        flex-shrink: 0 !important;   /* Keeps cards at exactly 110px */
         text-align: center !important;
         padding: 10px 0 !important;
         font-size: 0.85rem !important;
         border-radius: 8px !important;
-        margin-right: 0 !important;  /* Kills any destructive desktop margins */
+        margin-right: 0 !important;  
         display: inline-block !important;
         box-sizing: border-box !important;
 
