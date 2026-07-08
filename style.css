@@ -631,23 +631,16 @@ html, body {
         -webkit-overflow-scrolling: touch;
     }
 }
-/* Target laptop/desktop screens (typically 1024px wide and above) */
-@media screen and (min-width: 1024px) {
-  
-  .nav-item {
-    border: 1px solid rgba(255, 255, 255, 0.4); /* Subtle white border to match the header style */
-    border-radius: 6px;                          /* Rounded corners matching the 'SUPERVISOR' badge */
-    padding: 6px 14px;                           /* Spacing inside the box */
-    margin: 0 8px;                               /* Horizontal spacing between the buttons */
-    transition: all 0.3s ease;                   /* Smooth transition for hover effects */
-    display: inline-block;
-    text-decoration: none;
-    color: #ffffff;
-  }
+/* Replace '.nav-item' with the class name of your navigation links */
+.nav-item {
+    border: 1px solid #ffffff; /* White border to match text */
+    border-radius: 4px;        /* Optional: slightly rounds the corners */
+    padding: 6px 12px;         /* Adds breathing room inside the border */
+    margin: 0 5px;             /* Keeps the boxes from bumping into each other */
+    text-decoration: none;     /* Removes underlines if they are links */
+}
 
-  /* Optional: Add a nice hover effect for laptops when a user mouses over it */
-  .nav-item:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Slight highlight on hover */
-    border-color: #ffffff;                      /* Brightens the border */
-  }
+/* Optional hover effect to make it interactive */
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle highlight */
 }
