@@ -506,46 +506,90 @@ tr:hover {
     gap: 1rem;
     margin-top: 1.5rem;
 }
-
 /* ==========================================================================
-   MOBILE-SPECIFIC RESPONSIVE OVERRIDES (ZenDesk Custom Theme)
+   MOBILE RESPONSIVE FIXED OVERRIDES
    ========================================================================== */
 
 @media screen and (max-width: 768px) {
-    /* 1. Stack the header layout vertically and add breathing room */
+    /* 1. Reset Header Layout Wrapper */
     header {
+        display: flex !important;
         flex-direction: column !important;
         gap: 1rem !important;
-        padding: 1.25rem 1rem !important;
+        padding: 1rem !important;
+        align-items: stretch !important;
+    }
+
+    /* 2. Top Alignment Row (ZenDesk on Left, Profile Info on Right) */
+    .header-top-row {
+        display: flex !important;
+        justify-content: space-between !important;
         align-items: center !important;
-        text-align: center;
+        width: 100% !important;
+        gap: 10px;
     }
 
     header h1 {
-        font-size: 1.4rem;
-        margin-bottom: 0.25rem;
+        font-size: 1.25rem !important;
+        margin: 0 !important;
+        flex-shrink: 0;
     }
 
-    /* 2. Turn your nav links container into a sleek swipeable row */
+    /* 3. Refined Profile Meta Group styling */
+    .user-profile-meta {
+        display: flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        font-size: 0.8rem !important;
+        max-width: 70%;
+        justify-content: flex-end;
+    }
+
+    /* Prevent email text from breaking your layout structure */
+    .user-profile-meta span:first-child {
+        max-width: 110px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: #cbd5e1;
+    }
+
+    /* Specific mini tags for Supervisor & Log Out */
+    .badge-supervisor {
+        font-size: 0.65rem !important;
+        padding: 2px 6px !important;
+        background-color: rgba(255, 255, 255, 0.15);
+        color: #fff;
+    }
+
+    .btn-logout {
+        padding: 4px 8px !important;
+        font-size: 0.75rem !important;
+        border-radius: 4px !important;
+        background: #ffffff !important;
+        color: #1e1b4b !important;
+        border: none;
+        cursor: pointer;
+        font-weight: 600;
+    }
+
+    /* 4. Horizontal Scroll Container for Navigation Links */
     .nav-links {
         display: flex !important;
         gap: 10px !important;
-        width: 100vw;                 /* Spans the full viewport width */
-        padding: 4px 16px 12px 16px !important;
-        margin: 0 -1rem;              /* Bleeds to the screen edges nicely */
+        width: 100vw !important;
+        margin: 0 -1rem !important; /* Forces row to bleed to edge screen lines */
+        padding: 4px 16px 8px 16px !important;
         
-        /* Core horizontal scrolling mechanics */
-        overflow-x: auto !important;           
-        white-space: nowrap !important;        
+        overflow-x: auto !important;
+        white-space: nowrap !important;
         flex-direction: row !important;
         justify-content: flex-start !important;
-        
-        /* Smooth scrolling physics on mobile devices */
-        -webkit-overflow-scrolling: touch; 
-        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
+        box-sizing: border-box !important;
     }
 
-    /* Hide the default bulky mobile/browser scrollbars */
+    /* Completely hide unsightly scroll bars */
     .nav-links::-webkit-scrollbar {
         display: none !important;
     }
@@ -554,50 +598,29 @@ tr:hover {
         scrollbar-width: none !important;
     }
 
-    /* 3. Style individual navigation links into fixed-size cards */
+    /* 5. Clean, Locked Width Individual Items */
     header a {
-        /* Control your fixed width sizing here */
-        width: 120px;               
-        flex-shrink: 0 !important;   /* CRITICAL: Prevents items from compressing */
-        
-        margin-right: 0 !important;  /* Clears desktop right margins */
-        text-align: center;
-        padding: 10px 6px;
-        box-sizing: border-box;
-        display: inline-block;
-        font-size: 0.85rem;
-        border-radius: 8px;
+        width: 110px !important;     /* Adjusted exact fixed width matching your first app setup */
+        flex-shrink: 0 !important;   /* Prevents boxes from squeezing together */
+        text-align: center !important;
+        padding: 10px 0 !important;
+        font-size: 0.85rem !important;
+        border-radius: 8px !important;
+        margin-right: 0 !important;  /* Kills any destructive desktop margins */
+        display: inline-block !important;
+        box-sizing: border-box !important;
 
-        /* Premium Indigo matching theme */
-        background-color: rgba(255, 255, 255, 0.08);
-        border: 1px solid rgba(99, 102, 241, 0.25);
-        color: #cbd5e1;
+        background-color: rgba(255, 255, 255, 0.06) !important;
+        border: 1px solid rgba(99, 102, 241, 0.2) !important;
+        color: #cbd5e1 !important;
         text-decoration: none !important;
     }
 
-    /* Highlight or interaction state for mobile taps */
-    header a:hover, 
+    /* Active Highlight States */
+    header a.active, 
     header a:active {
-        color: #ffffff;
-        background-color: #4f46e5;
-        border-color: #6366f1;
-        box-shadow: 0 0 10px rgba(99, 102, 241, 0.3);
-    }
-
-    /* 4. Ensure user profile metrics/logout buttons don't break lines weirdly */
-    header div:not(.nav-links) {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 8px;
-        font-size: 0.85rem;
-        color: #cbd5e1;
-    }
-    
-    /* Soft override fix for the Log Out button inside header to stay neat */
-    header .btn, header button {
-        padding: 0.4rem 0.8rem !important;
-        font-size: 0.8rem !important;
+        color: #ffffff !important;
+        background-color: #4f46e5 !important;
+        border-color: #6366f1 !important;
     }
 }
