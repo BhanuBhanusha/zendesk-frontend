@@ -682,8 +682,7 @@ async function initCommentsPage() {
 // Helper Formatters
 function formatDate(dateStr) {
     if (!dateStr) return '';
-    const d = new Date(dateStr);
-    return d.toLocaleString();
+    return new Date(dateStr + 'Z').toLocaleString();
 }
 
 function escapeHtml(str) {
